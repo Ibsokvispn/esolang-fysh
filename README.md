@@ -124,4 +124,4 @@ Le bonus `interpreteur/` n'est pas réalisé.
   l'interpréteur listés dans la section « Points laissés ouverts ». Ces textes ont été relus par moi.
 - Pour rédiger `EXPLICATION.md`, Claude a lu `p.fysh`. La confrontation décrite dans `llm/JOURNAL.md`
   a été menée avec plusieurs LLM (dont Claude Haiku 5.5 et Claude Sonnet 5.5), dans des sessions
-  distinctes de celle-ci ; les conditions de chaque essai sont décrites dans ce journal.
+  distinctes de celle-ci ; les conditions de chaque essai sont décrites dans `llm/JOURNAL.md`.
