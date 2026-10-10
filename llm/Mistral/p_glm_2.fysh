@@ -1,0 +1,42 @@
+><number1> ≈ ><{({{({°> ~
+><number2> ≈ ><{(({((°> ~
+><//> Euclid loop, x ends up holding the GCD
+><x> ≈ ><number1> ~
+><y> ≈ ><number2> ~
+><//> minusOne is a school of zero and a negative fysh
+><minusOne> ≈ ><(°> <°))}>< ~
+🌀 [><y> o~ ><(°>]
+><>
+    ><//> r = x modulo y, via subtractive doubling
+    ><r> ≈ ><x> ~
+    ><ym> ≈ ><y> ~
+    <ym><< ~
+    🌀 [><r> o~ ><ym>]
+    ><>
+        ><//> t = largest y times a power of two not exceeding r
+        ><t> ≈ ><y> ~
+        ><tt> ≈ ><t> ><t> ~
+        ><ttm> ≈ ><tt> ~
+        <ttm><< ~
+        🌀 [><r> o~ ><ttm>]
+        ><>
+            ><t> ≈ ><tt> ~
+            ><tt> ≈ ><t> ><t> ~
+            ><ttm> ≈ ><tt> ~
+            <ttm><< ~
+        <><
+        ><neg> ≈ ><t> ♡ ><minusOne> ~
+        ><r> ≈ ><r> ><neg> ~
+    <><
+    ><x> ≈ ><y> ~
+    ><y> ≈ ><r> ~
+<><
+><m1> ≈ 🫧The GCD of🫧 ~
+><m2> ≈ 🫧and🫧 ~
+><m3> ≈ 🫧is🫧 ~
+(+o ><m1> ~
+(+o ><number1> ~
+(+o ><m2> ~
+(+o ><number2> ~
+(+o ><m3> ~
+(+o ><x> ~

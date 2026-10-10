@@ -1,0 +1,38 @@
+><number1> ≈ ><(°> ~
+><number2> ≈ ><(°> ~
+><//> Copies de travail (number1 et number2 ne sont jamais réaffectés)
+><x> ≈ ><number1> ~
+><y> ≈ ><number2> ~
+><//> Euclide : tant que y > 0, (x, y) <- (y, x mod y)
+🌀 [><y> o~ ><(°>]
+><>
+    ><//> r = x mod y
+    ><r> ≈ ><x> ~
+    ><t> ≈ ><y> ~
+    ><h> ≈ ><x> >> ><(({°> ~
+    ><//> t = y * 2^k, plus grand possible avec t <= x
+    🌀 [><h> o≈ ><t>]
+    ><>
+        ><t> ≈ ><t> << ><(({°> ~
+    <><
+    ><//> Réduction : de t vers y, on retranche t quand r >= t
+    🌀 [><t> o≈ ><y>]
+    ><>
+        ><(((^> [><r> o≈ ><t>]
+        ><>
+            ><nt> ≈ ! ><t> ~
+            >><nt> ~
+            ><r> ≈ ><r> ><nt> ~
+        <><
+        ><t> ≈ ><t> >> ><(({°> ~
+    <><
+    ><x> ≈ ><y> ~
+    ><y> ≈ ><r> ~
+<><
+><//> Sortie
+(+o 🫧The GCD of🫧 ~
+(+o ><number1> ~
+(+o 🫧and🫧 ~
+(+o ><number2> ~
+(+o 🫧is🫧 ~
+(+o ><x> ~

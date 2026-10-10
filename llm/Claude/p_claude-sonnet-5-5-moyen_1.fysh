@@ -1,0 +1,65 @@
+><number1> ≈ ><{({{({°> ~
+><number2> ≈ ><{(({((°> ~
+><//> PGCD binaire (algorithme de Stein) : uniquement shifts, AND/OR, comparaisons, soustraction
+><ua> ≈ ><(°> ~
+><vb> ≈ ><(°> ~
+><k> ≈ ><(°> ~
+><t> ≈ ><(°> ~
+><g> ≈ ><(°> ~
+><one> ≈ ><{°> ~
+><ua> ≈ ><number1> ~
+><vb> ≈ ><number2> ~
+
+><(((^> [><number1> ~o ><one>]
+><>
+    ><g> ≈ ><number2> ~
+<><
+><(((*> ><(((^> [><number2> ~o ><one>]
+><>
+    ><g> ≈ ><number1> ~
+<><
+><(((*>
+><>
+    ><t> ≈ ><ua> | ><vb> ~
+    ><t> ≈ ><t> & ><one> ~
+    🌀 [><t> ~o ><one>]
+    ><>
+        ><ua> ≈ ><ua> >> ><one> ~
+        ><vb> ≈ ><vb> >> ><one> ~
+        >><k> ~
+        ><t> ≈ ><ua> | ><vb> ~
+        ><t> ≈ ><t> & ><one> ~
+    <><
+    ><t> ≈ ><ua> & ><one> ~
+    🌀 [><t> ~o ><one>]
+    ><>
+        ><ua> ≈ ><ua> >> ><one> ~
+        ><t> ≈ ><ua> & ><one> ~
+    <><
+    🌀 [><vb> o~ ><(°>]
+    ><>
+        ><t> ≈ ><vb> & ><one> ~
+        ><(((^> [><t> ~o ><one>]
+        ><>
+            ><vb> ≈ ><vb> >> ><one> ~
+        <><
+        ><(((*>
+        ><>
+            ><(((^> [><ua> o~ ><vb>]
+            ><>
+                ><t> ≈ ><ua> ~
+                ><ua> ≈ ><vb> ~
+                ><vb> ≈ ><t> ~
+            <><
+            ><vb> ≈ ><vb> <ua>< ~
+        <><
+    <><
+    ><g> ≈ ><ua> << ><k> ~
+<><
+
+(+o 🫧The GCD of🫧 ~
+(+o ><number1> ~
+(+o 🫧and🫧 ~
+(+o ><number2> ~
+(+o 🫧is🫧 ~
+(+o ><g> ~

@@ -1,0 +1,25 @@
+><number1> ≈ <littéral entier> ~
+><number2> ≈ <littéral entier> ~
+> a ≈ number1 ~
+> b ≈ number2 ~
+
+🌀 [> o~ b]
+><>
+  ><(((^> [> o~ a]
+  ><>
+    > temp ≈ a ~
+    > a ≈ b ~
+    > b ≈ temp 💔 b ~  # Fallback conceptuel ou soustractions successives
+  <><
+  ><(((*>
+  ><>
+    # Boucle de soustraction si modulo direct incertain
+  <><
+<><
+
+(+o 🫧The GCD of🫧)
+(+o number1)
+(+o 🫧and🫧)
+(+o number2)
+(+o 🫧is🫧)
+(+o a)

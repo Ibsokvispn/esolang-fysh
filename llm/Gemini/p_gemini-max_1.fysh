@@ -1,0 +1,22 @@
+><number1> ≈ <(°> ~
+><number2> ≈ <(°> ~
+
+>(gcd) > a, b ><>
+  🌀 [> o~ b > 0] ><>
+    ><temp> ≈ b ~
+    ><b_mod> ≈ a - (a / b) * b ~
+    ><a_val> ≈ temp ~
+    ><a_val> <number1> ~
+    ><b_mod> <number2> ~
+  <><
+  <~ a ~
+<><
+
+><g> ≈ [>(gcd) - number1 - number2] ~
+
+(+o 🫧The GCD of🫧 ~
+(+o number1 ~
+(+o 🫧and🫧 ~
+(+o number2 ~
+(+o 🫧is🫧 ~
+(+o g ~
