@@ -1,0 +1,85 @@
+><//> First define the 2 variables we will use
+
+><//> 45 is written 101101 in binary
+><number1> ≈ ><)°> ~
+><//> 36 is written 100100 in binary
+><number2> ≈ ><{((}))°> ~
+
+
+><//> Function to compute the GCD of two numbers using Stein's algorithm
+
+>(gcd) ><n1> ><n2>
+><>
+    ><//> 1. If both numbers are equals, GCD = n1 = n2
+    ><(((^> [(><n1> o≈ ><n2>) && (><n1> ≈o ><n2>)]
+    ><>
+        ><//> (+o 🫧Both are equals🫧 ~ 
+        <~ ><n1> ~
+    <><
+
+    ><//> 2. If n1 or n2 is nul, GCD is the other
+    ><(((*> ><(((^> [!!><n1>]
+    ><>
+        ><//> (+o 🫧n1 is nul🫧~
+        <~ ><n2> ~
+    <><
+    ><(((*> ><(((^> [!!><n2>]
+    ><>
+        ><//> (+o 🫧n2 is nul🫧~
+        <~ ><n1> ~
+    <><
+
+    ><//> 3. If n1 and n2 are both even, GCD = 2 * GCD(n1/2 n2/2)
+    ><(((*> ><(((^> [!!(><n1> & ><{°>)]         ><//> If n1 even
+    ><>
+        ><(((^> [!!(><n2> & ><{°>)]             ><//> If n2 even
+        ><>
+            ><//> (+o 🫧Both numbers are even🫧~
+            ><steven> = ><n1> >> ><{°> ~
+            ><bob> = ><n2> >> ><{°> ~
+            <~ [>(gcd) ><steven> - ><bob>] <3 ><{)°> ~
+        <><
+
+        ><//> 4.1. If n1 even and n2 odd, GCD = GCD(n1/2, n2) 
+        ><(((*>
+        ><>
+            ><//> (+o 🫧Only n1 is even🫧~
+            ><steven> = ><n1> >> ><{°> ~
+            <~ [>(gcd) ><steven> - ><n2>] ~
+        <><
+    <><
+
+    ><//> 4.2. If n2 even and n1 odd, GCD = GCD(n1, n2/2) 
+    ><(((*> ><(((^> [!!(><n2> & ><{°>)] 
+    ><>
+        ><//> (+o 🫧Only n2 is even🫧~
+        ><steven> = ><n2> >> ><{°> ~
+        <~ [>(gcd) ><n1> - ><steven>] ~
+    <><
+
+    ><//> 5. Both n1 and n2 are odd, u>v, GCD = GCD((n1-n2)/2, min(u, v))
+    ><(((*> ><(((^> [><n1> o~ ><n2>]
+    ><>
+        ><//> (+o 🫧Both odd, n1 > n2🫧 ~ 
+        ><steven> = (><n1> <n2><) >> ><{°> ~
+        <~ [>(gcd) ><steven> - ><n2>] ~
+    <><
+
+    ><(((*>
+    ><>
+        ><//> (+o 🫧Both odd, n2 > n1🫧 ~ 
+        ><steven> ≈ (><n2> <n1><) >> ><{°> ~
+        <~ [>(gcd) ><n1> - ><steven>] ~
+    <><
+<><
+
+><result> = [>(gcd) ><number1> - ><number2>] ~
+
+><//> (+o 🫧🫧~ 
+
+(+o 🫧The GCD of 🫧~ 
+(+o ><number1> ~ 
+(+o 🫧and 🫧 ~ 
+(+o ><number2> ~ 
+(+o 🫧is 🫧 ~ 
+(+o ><result> ~
