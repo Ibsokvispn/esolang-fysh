@@ -86,19 +86,19 @@ Mode de pensée :
 
 Fysh n'a pas d'opérateur modulo, et la soustraction n'est documentée que de façon ambiguë. J'ai donc construit le programme avec les seules briques que la doc montre clairement :
 
-Euclide : tant que y > 0, on remplace (x, y) par (y, x mod y).
-Modulo : sans division ni modulo, je calcule x mod y par décalages. On double y jusqu'au plus grand y·2^k ≤ x, puis on redescend en retranchant chaque palier quand r ≥ t. Cela ne demande que ~31 itérations par modulo, ce qui évite le coût de la soustraction répétée (qui serait de l'ordre de 2³¹ pour certains couples).
-Soustraction : r − t s'écrit r + (¬t + 1), avec ! (NOT bit à bit), puis l'incrément >>. On n'utilise donc aucun nombre négatif littéral.
-Entrées : number1 et number2 ne sont lues qu'une fois, pour initialiser les copies x et y. Les deux lignes d'entrée sont les deux premières du fichier, comme l'exige le SPEC.
-Sortie : six (+o dans l'ordre demandé, a et b étant les valeurs d'origine.
+    - Euclide : tant que y > 0, on remplace (x, y) par (y, x mod y).
+    - Modulo : sans division ni modulo, je calcule x mod y par décalages. On double y jusqu'au plus grand y·2^k ≤ x, puis on redescend en retranchant chaque palier quand r ≥ t. Cela ne demande que ~31 itérations par modulo, ce qui évite le coût de la soustraction répétée (qui serait de l'ordre de 2³¹ pour certains couples).
+    - Soustraction : r − t s'écrit r + (¬t + 1), avec ! (NOT bit à bit), puis l'incrément >>. On n'utilise donc aucun nombre négatif littéral.
+    - Entrées : number1 et number2 ne sont lues qu'une fois, pour initialiser les copies x et y. Les deux lignes d'entrée sont les deux premières du fichier, comme l'exige le SPEC.
+    - Sortie : six (+o dans l'ordre demandé, a et b étant les valeurs d'origine.
 
 Points de doute:
 
-Décalage gauche : la doc montre ><steven> << ><(({°> pour le décalage, mais <steven><< pour le décrément. Je suppose que << avec espaces est le décalage. C'est le point le plus fragile.
-Chaînes : j'ai choisi les bulles 🫧…🫧 plutôt que *…*, pour éviter la confusion avec le séparateur * des tableaux.
-Imbrication des blocs : 🌀, ><(((^> et les ><>…<>< imbriqués ne sont montrés dans la doc que séparément. Je suppose que l'imbrication est permise.
-Entiers signés : je suppose que ! et l'addition donnent le complément à deux attendu sur 32 bits. Cela n'a d'importance que si t dépasse 2³⁰, ce que mon test t ≤ x/2 évite normalement.
-Affichage : je suppose que (+o imprime en décimal et termine la ligne, comme le SPEC le suppose.
+    1. Décalage gauche : la doc montre ><steven> << ><(({°> pour le décalage, mais <steven><< pour le décrément. Je suppose que << avec espaces est le décalage. C'est le point le plus fragile.
+    2.Chaînes : j'ai choisi les bulles 🫧…🫧 plutôt que *…*, pour éviter la confusion avec le séparateur * des tableaux.
+    3. Imbrication des blocs : 🌀, ><(((^> et les ><>…<>< imbriqués ne sont montrés dans la doc que séparément. Je suppose que l'imbrication est permise.
+    4. Entiers signés : je suppose que ! et l'addition donnent le complément à deux attendu sur 32 bits. Cela n'a d'importance que si t dépasse 2³⁰, ce que mon test t ≤ x/2 évite normalement.
+    5.Affichage : je suppose que (+o imprime en décimal et termine la ligne, comme le SPEC le suppose.
 ```
 
 </details>
@@ -115,25 +115,25 @@ Affichage : je suppose que (+o imprime en décimal et termine la ligne, comme le
 ```text
 Mon raisonnement :
 
-Fysh n'a ni modulo, ni opérateur d'égalité, et la division entière n'est pas garantie par la doc. J'ai donc écarté l'algorithme d'Euclide classique.
-La soustraction répétée est trop lente pour des valeurs jusqu'à 2³¹−1, par exemple (2147483647, 1).
-J'ai choisi le PGCD binaire (Stein), qui n'utilise que &, |, >>, la soustraction et les comparaisons ~o / o~. Il fait environ 60 itérations au maximum.
-number1 et number2 ne sont jamais modifiées. Je travaille sur les copies left et right, car les originaux sont affichés à la fin.
-Zéros : si left vaut 0, left prend la valeur de right. Ensuite, si right vaut 0, right prend la valeur de left. Si les deux restent nuls, le bloc principal est sauté et le résultat est 0 ♡ 1 = 0. Cela évite une boucle infinie sur (0, 0).
-Facteurs 2 communs : au lieu d'un décalage par un nombre variable, je double scale à chaque facteur 2 commun. Le résultat final est left ♡ scale.
-Tests de parité : je calcule x & 1 dans une variable, puis je teste < 1. Je n'ai pas supposé qu'un résultat de & puisse servir directement de condition.
-Zéro et condition d'arrêt : je compare à un littéral zéro ou un avec ~o et o~, faute d'opérateur d'égalité.
-Les lignes 1 et 2 sont exactement les affectations imposées, sans commentaire sur la ligne, pour que le remplacement automatique fonctionne.
+    - Fysh n'a ni modulo, ni opérateur d'égalité, et la division entière n'est pas garantie par la doc. J'ai donc écarté l'algorithme d'Euclide classique.
+    - La soustraction répétée est trop lente pour des valeurs jusqu'à 2³¹−1, par exemple (2147483647, 1).
+    - J'ai choisi le PGCD binaire (Stein), qui n'utilise que &, |, >>, la soustraction et les comparaisons ~o / o~. Il fait environ 60 itérations au maximum.
+    - number1 et number2 ne sont jamais modifiées. Je travaille sur les copies left et right, car les originaux sont affichés à la fin.
+    - Zéros : si left vaut 0, left prend la valeur de right. Ensuite, si right vaut 0, right prend la valeur de left. Si les deux restent nuls, le bloc principal est sauté et le résultat est 0 ♡ 1 = 0. Cela évite une boucle infinie sur (0, 0).
+    - Facteurs 2 communs : au lieu d'un décalage par un nombre variable, je double scale à chaque facteur 2 commun. Le résultat final est left ♡ scale.
+    - Tests de parité : je calcule x & 1 dans une variable, puis je teste < 1. Je n'ai pas supposé qu'un résultat de & puisse servir directement de condition.
+    - Zéro et condition d'arrêt : je compare à un littéral zéro ou un avec ~o et o~, faute d'opérateur d'égalité.
+    - Les lignes 1 et 2 sont exactement les affectations imposées, sans commentaire sur la ligne, pour que le remplacement automatique fonctionne.
 
 Points sur lesquels j'ai des doutes :
 
-Soustraction de variable ><right> <left>< : je l'ai déduite des exemples de la doc (<°)})>< pour un littéral, <n><-like pour fib). La doc ne donne pas d'exemple explicite pour une variable. C'est le point le plus fragile, à cause d'une ambiguïté possible avec le décrément <x><<.
-Sortie : je suppose que (+o 🫧texte🫧 ~ affiche la chaîne sans guillemets, avec un saut de ligne, et que (+o affiche un entier en décimal.
-else if : je ne l'utilise pas. Je n'ai que des if successifs, pour réduire le risque.
-Précédence et expressions : je n'ai écrit qu'une seule opération par instruction, sauf l'addition scale scale par juxtaposition, pour doubler scale.
-Littéraux : j'utilise ><(({°> pour 1 (exemple de la doc) et ><(°> pour 0 (donné dans la SPEC).
-Entiers 32 bits : scale ♡ left ne dépasse jamais le résultat, qui est ≤ 2³¹−1. Je ne sais pas si les entiers sont signés sur 32 bits, mais on reste dans la limite.
-Commentaires : ><//> sur ligne dédiée uniquement, car je ne sais pas comment le lexer réagit à un commentaire après du code.
+    1. Soustraction de variable ><right> <left>< : je l'ai déduite des exemples de la doc (<°)})>< pour un littéral, <n><-like pour fib). La doc ne donne pas d'exemple explicite pour une variable. C'est le point le plus fragile, à cause d'une ambiguïté possible avec le décrément <x><<.
+    2. Sortie : je suppose que (+o 🫧texte🫧 ~ affiche la chaîne sans guillemets, avec un saut de ligne, et que (+o affiche un entier en décimal.
+    3. else if : je ne l'utilise pas. Je n'ai que des if successifs, pour réduire le risque.
+    4. Précédence et expressions : je n'ai écrit qu'une seule opération par instruction, sauf l'addition scale scale par juxtaposition, pour doubler scale.
+    5. Littéraux : j'utilise ><(({°> pour 1 (exemple de la doc) et ><(°> pour 0 (donné dans la SPEC).
+    6. Entiers 32 bits : scale ♡ left ne dépasse jamais le résultat, qui est ≤ 2³¹−1. Je ne sais pas si les entiers sont signés sur 32 bits, mais on reste dans la limite.
+    7. Commentaires : ><//> sur ligne dédiée uniquement, car je ne sais pas comment le lexer réagit à un commentaire après du code.
 ```
 
 </details>
@@ -150,21 +150,20 @@ Commentaires : ><//> sur ligne dédiée uniquement, car je ne sais pas comment l
 ```text
 
 Mode de pensée :
-1. Analyse des entrées et contraintes : Le programme reçoit deux entiers number1 et number2 définis au tout début du fichier source par le banc de test. Le corps du programme ne doit faire aucune hypothèse sur leurs valeurs initiales.
+    1. Analyse des entrées et contraintes : Le programme reçoit deux entiers number1 et number2 définis au tout début du fichier source par le banc de test. Le corps du programme ne doit faire aucune hypothèse sur leurs valeurs initiales.
 
-2. Algorithme du PGCD : L'algorithme d'Euclide repose sur la division euclidienne répétée (ou modulo) jusqu'à ce que le second terme devienne nul. Le modulo est exprimé algébriquement par a - (a / b) * b.
+    2. Algorithme du PGCD : L'algorithme d'Euclide repose sur la division euclidienne répétée (ou modulo) jusqu'à ce que le second terme devienne nul. Le modulo est exprimé algébriquement par a - (a / b) * b.
 
-3. Structure en Fysh :
-
-- Définition d'une fonction sous-marine >(gcd) prenant deux paramètres.
-- Utilisation d'une boucle 🌀 (whirlpool) pour répéter l'opération tant que b > 0.
-- Retour du résultat avec le calmar <~.
-- Utilisation de l'ancre d'affichage (+o combinée avec des chaînes de caractères entre bulles 🫧...🫧 et des variables pour respecter exactement les 6 lignes de sortie exigées.
+    3. Structure en Fysh :
+        - Définition d'une fonction sous-marine >(gcd) prenant deux paramètres.
+        - Utilisation d'une boucle 🌀 (whirlpool) pour répéter l'opération tant que b > 0.
+        - Retour du résultat avec le calmar <~.
+        - Utilisation de l'ancre d'affichage (+o combinée avec des chaînes de caractères entre bulles 🫧...🫧 et des variables pour respecter exactement les 6 lignes de sortie exigées.
 
 Points de doute :
-- Syntaxe exacte des paramètres multiples et des fonctions : Bien que la documentation de Fysh décrive la syntaxe des sous-marins >(nom) et des appels via les aquariums [>(nom) - arg1 - arg2], la gestion précise du passage de plusieurs paramètres et de leur portée locale (variables minuscules vs globales) dans les versions actuelles du langage peut être sujette à interprétation subtile.
-- Évaluation des expressions arithmétiques complexes : L'imbrication d'opérations arithmétiques comme a - (a / b) * b dépend de la priorité des opérateurs et de l'utilisation correcte des bols (...) dans Fysh.
-- Comportement des sauts de ligne à l'affichage : L'instruction d'affichage (+o est supposée insérer un saut de ligne automatique par impression, mais la gestion fine des types (affichage d'une variable numérique vs chaîne de caractères) dépend de l'interpréteur officiel.
+    - Syntaxe exacte des paramètres multiples et des fonctions : Bien que la documentation de Fysh décrive la syntaxe des sous-marins >(nom) et des appels via les aquariums [>(nom) - arg1 - arg2], la gestion précise du passage de plusieurs paramètres et de leur portée locale (variables minuscules vs globales) dans les versions actuelles du langage peut être sujette à interprétation subtile.
+    - Évaluation des expressions arithmétiques complexes : L'imbrication d'opérations arithmétiques comme a - (a / b) * b dépend de la priorité des opérateurs et de l'utilisation correcte des bols (...) dans Fysh.
+    - Comportement des sauts de ligne à l'affichage : L'instruction d'affichage (+o est supposée insérer un saut de ligne automatique par impression, mais la gestion fine des types (affichage d'une variable numérique vs chaîne de caractères) dépend de l'interpréteur officiel.
 ```
 
 </details>
@@ -182,20 +181,20 @@ Points de doute :
 1. Mode de pensée et conception
 Pour écrire un algorithme de calcul de PGCD (plus grand commun diviseur) en Fysh sans pouvoir l'exécuter :
 
-- Entrées : Le programme doit commencer par les deux lignes obligatoires :
+    - Entrées : Le programme doit commencer par les deux lignes obligatoires :
 
 Extrait de code
 ><number1> ≈ <littéral entier> ~
 ><number2> ≈ <littéral entier> ~
 
-- Algorithme d'Euclide : Le moyen le plus robuste de calculer le PGCD est d'utiliser l'algorithme d'Euclide par soustractions successives (ou divisions si l'opérateur modulo/division entière est bien géré, mais les boucles while (🌀) et les conditions (><(((^>, ><(((*>) permettent d'implémenter facilement une boucle while (b != 0) ou while (a != b)).
+    - Algorithme d'Euclide : Le moyen le plus robuste de calculer le PGCD est d'utiliser l'algorithme d'Euclide par soustractions successives (ou divisions si l'opérateur modulo/division entière est bien géré, mais les boucles while (🌀) et les conditions (><(((^>, ><(((*>) permettent d'implémenter facilement une boucle while (b != 0) ou while (a != b)).
 
-- Structure de contrôle :
-    - Utilisation de boucles 🌀 avec des conditions de comparaison (> o~ ou >= o≈).
-    - Affectations, opérations arithmétiques (soustractions avec des fysh nagant vers la gauche <°)})>< ou division/modulo par cœur brisé 💔).
+    - Structure de contrôle :
+        - Utilisation de boucles 🌀 avec des conditions de comparaison (> o~ ou >= o≈).
+        - Affectations, opérations arithmétiques (soustractions avec des fysh nagant vers la gauche <°)})>< ou division/modulo par cœur brisé 💔).
 
-- Affichage (Sortie) :
-    - La sortie doit respecter strictement le format en 6 lignes requis par la section 3 de SPEC.md :
+    - Affichage (Sortie) :
+        - La sortie doit respecter strictement le format en 6 lignes requis par la section 3 de SPEC.md :
 
 The GCD of
 <a>
@@ -229,20 +228,20 @@ is
 
 ```text
 Mon mode de pensée :
-- Algorithme — Euclide classique : tant que y > 0 : (x, y) ← (y, x mod y). Comme Fysh n'a pas d'opérateur modulo, je calcule x mod y par soustraction doublante : je retire de r le plus grand y × 2^k qui tient dans r (chaque passage divise r par au moins 2). Complexité ~O(log² n) : environ 2 000 instructions au pire cas (2³¹−1), donc rapide même en interprété. Les cas (0,0), (0,b) et (a,a) tombent juste avec cette boucle.
-- Choisis de syntaxe (uniquement des formes vérifiées par des exemples complets de la doc) :
-    - Comparaisons : uniquement o~ (>) et o≈ (>=), toutes deux démontrées dans des exemples de while ;
-    - @ [cond] + ><> … <>< pour les boucles ;
-    - Addition = banc de fysh (r + neg → ><r> ><neg> ~) ;
-    - Chaînes *…* affectées d'abord à des variables (><m1> ≈ *The GCD of* ~), motif exact de la doc, puis 6 (+o.
+    - Algorithme — Euclide classique : tant que y > 0 : (x, y) ← (y, x mod y). Comme Fysh n'a pas d'opérateur modulo, je calcule x mod y par soustraction doublante : je retire de r le plus grand y × 2^k qui tient dans r (chaque passage divise r par au moins 2). Complexité ~O(log² n) : environ 2 000 instructions au pire cas (2³¹−1), donc rapide même en interprété. Les cas (0,0), (0,b) et (a,a) tombent juste avec cette boucle.
+    - Choisis de syntaxe (uniquement des formes vérifiées par des exemples complets de la doc) :
+        - Comparaisons : uniquement o~ (>) et o≈ (>=), toutes deux démontrées dans des exemples de while ;
+        - @ [cond] + ><> … <>< pour les boucles ;
+        - Addition = banc de fysh (r + neg → ><r> ><neg> ~) ;
+        - Chaînes *…* affectées d'abord à des variables (><m1> ≈ *The GCD of* ~), motif exact de la doc, puis 6 (+o.
 
 Mes doutes :
-1. La doc wiki contient une incohérence : elle écrit « 1 » sous la forme (((+œil, ce qui vaut 0 en lecture standard (MSB à gauche, {/}=1). Le SPEC (45→{({{({, 36→{(({(() confirme la lecture standard, donc j'ai traité ça comme une coquille de la wiki — et j'ai conçu le programme pour n'avoir jamais besoin du littéral 1. Je n'utilise que 0 (><(°>, approuvé par le SPEC).
-2. Soustraction d'une variable : la doc ne montre que des littéraux nageant à gauche (<°)})><), jamais une variable. Syntaxe d'une variable inversée = non vérifiable → je contourne : r − t devient r + ((−1) × t), avec −1 écrit en littéral négatif documenté (<°(({><), multiplié par ♡.
-3. Division évitée volontairement : </3 existe mais la sémantique int/float est inconnue (et un float fuiterait dans le résultat). C'est le principal risque que j'ai écarté.
-4. Pas d'opérateur d'égalité dans le langage : j'ai structuré les conditions pour n'utiliser que > et >=.
-5. Boucles imbriquées : aucun exemple imbriqué dans la doc ; je suppose que ><>/<>< se marquent récursivement (comportement standard d'un parseur).
-6. (+o d'une chaîne : jamais montré directement → passe par une variable d'abord (motif documenté).
+    1. La doc wiki contient une incohérence : elle écrit « 1 » sous la forme (((+œil, ce qui vaut 0 en lecture standard (MSB à gauche, {/}=1). Le SPEC (45→{({{({, 36→{(({(() confirme la lecture standard, donc j'ai traité ça comme une coquille de la wiki — et j'ai conçu le programme pour n'avoir jamais besoin du littéral 1. Je n'utilise que 0 (><(°>, approuvé par le SPEC).
+    2. Soustraction d'une variable : la doc ne montre que des littéraux nageant à gauche (<°)})><), jamais une variable. Syntaxe d'une variable inversée = non vérifiable → je contourne : r − t devient r + ((−1) × t), avec −1 écrit en littéral négatif documenté (<°(({><), multiplié par ♡.
+    3. Division évitée volontairement : </3 existe mais la sémantique int/float est inconnue (et un float fuiterait dans le résultat). C'est le principal risque que j'ai écarté.
+    4. Pas d'opérateur d'égalité dans le langage : j'ai structuré les conditions pour n'utiliser que > et >=.
+    5. Boucles imbriquées : aucun exemple imbriqué dans la doc ; je suppose que ><>/<>< se marquent récursivement (comportement standard d'un parseur).
+    6. (+o d'une chaîne : jamais montré directement → passe par une variable d'abord (motif documenté).
 ```
 
 </details>
@@ -265,9 +264,9 @@ Ce que la doc officielle m'a appris :
 L'algorithme est inchangé (Euclide + modulo par soustraction doublante, O(log²), rapide jusqu'à 2³¹−1). J'ai aussi remplacé @ par 🌀 et gardé [ ], la forme exacte de l'exemple officiel de factorielle, et je n'utilise plus que des opérateurs présents dans des exemples complets du site : o~, ♡, banc de fysh, <nom><<, (+o, ≈, commentaires ><//>.
 
 Doutes restants :
-- Addition de deux variables (><r> ><neg>) : le site ne montre que littéral+littéral ; la forme variable+variable n'apparaît que dans l'exemple Fibonacci de la vieille page wiki. Syntaxe très probable, mais c'est le point suivant à surveiller.
-- Affichage d'une variable chaîne ((+o ><m1> ~) : la doc montre l'affichage d'entiers seulement.
-La doc du site reproduit toujours la coquille ((( pour « 1 » (qui vaut 0 en lecture standard) — mes programmes évitent le littéral 1, donc sans impact, mais ça confirme que leurs exemples contiennent des erreurs.
+    - Addition de deux variables (><r> ><neg>) : le site ne montre que littéral+littéral ; la forme variable+variable n'apparaît que dans l'exemple Fibonacci de la vieille page wiki. Syntaxe très probable, mais c'est le point suivant à surveiller.
+    - Affichage d'une variable chaîne ((+o ><m1> ~) : la doc montre l'affichage d'entiers seulement.
+    - La doc du site reproduit toujours la coquille ((( pour « 1 » (qui vaut 0 en lecture standard) — mes programmes évitent le littéral 1, donc sans impact, mais ça confirme que leurs exemples contiennent des erreurs.
 ```
 
 </details>
