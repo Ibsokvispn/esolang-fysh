@@ -203,7 +203,7 @@ and
 is
 <g>
 
-    - En Fysh, pour afficher la valeur d'une variable, on utilise l'ancre (+o ou ⚓.
+        - En Fysh, pour afficher la valeur d'une variable, on utilise l'ancre (+o ou ⚓.
 
 2. Points de doute (incertitudes sur le langage Fysh) :
 Étant donné que Fysh est un langage ésotérique très récent (2024) et que je n'ai pas accès à un environnement d'exécution pour tester :
