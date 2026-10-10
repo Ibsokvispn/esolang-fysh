@@ -17,15 +17,16 @@ Le Fysh dispose d'une implémentation de référence en Go. Je l'ai utilisée de
 | Moyen | Lien | Version |
 |-------|------|---------|
 | Compilateur en ligne (playground) | https://fysh-fyve.github.io/playground/ | — |
-| Extension VSCode `Fysh-Fyve.fysh` | https://marketplace.visualstudio.com/items?itemName=Fysh-Fyve.fysh | v0.0.5 |
+| Extension VSCode `Fysh-Fyve.fysh` | https://marketplace.visualstudio.com/items?itemName=Fysh-Fyve.fysh | v1.2.1 |
 
 J'ai téléchargé le binaire `fysh` depuis les releases GitHub du projet (https://github.com/Fysh-Fyve/fysh,
 dossier `pkg/go-fysh`). Le bouton « run » de l'extension sur VSCode se contente ensuite de lancer
 `fysh <fichier>` dans un terminal. Le binaire est rangé dans le dossier de stockage de l'extension et
 n'est pas dans le `PATH`.
 
-On peut également télécharger le compilateur avec la commande `go install github.com/Fysh-Fyve/fysh/pkg/go-fysh/cmd@latest` 
-(nécessite `go` d'installé - `sudo snap install go --classic `).
+On peut également compiler l'interpréteur avec la commande `go install github.com/Fysh-Fyve/fysh/pkg/go-fysh/cmd@latest`
+(le binaire obtenu s'appelle `cmd` et correspond au dernier commit du dépôt, plus récent que la release v0.0.5 ;
+nécessite `go` d'installé - `sudo snap install go --classic `).
 
 
 - Version de `fysh` (release GitHub) : v0.0.5
@@ -57,7 +58,7 @@ Sur toute la suite de tests :
 ```bash
 ./run.sh p.fysh                          # utilise la commande "fysh" du PATH
 FYSH=/chemin/vers/fysh ./run.sh p.fysh   # interpréteur à un autre endroit
-./run.sh llm/p1.fysh                  # une proposition du LLM
+./run.sh llm/p_claude-sonnet-5-5-moyen_1.fysh   # une proposition d'un LLM
 ```
 
 Le script affiche `[OK]` ou `[KO]` pour chaque test, puis le nombre de tests réussis, et retourne un code
@@ -84,7 +85,7 @@ Cette copie est écrite dans `build/<programme>_NN.fysh` (dossier ignoré par Gi
 ## 5. Points laissés ouverts par la spécification du langage
 
 La page Esolang ne tranche pas plusieurs points. Pour chacun, voici le comportement observé dans
-l'implémentation de référence (code source lu et expériences faites avec `fysh`).
+l'implémentation de référence, vérifié par des expériences avec `fysh` v0.0.5 (et lecture du code source).
 
 | Point | Documentation | Comportement observé |
 |-------|---------------|----------------------|
@@ -109,8 +110,8 @@ l'implémentation de référence (code source lu et expériences faites avec `fy
 | `SPEC.md` | description en langue naturelle de ce que calcule `p.fysh` (reçue par le LLM) |
 | `tests/` | cas de test `NN.in` / `NN.out` |
 | `run.sh` | exécute un programme sur tous les tests |
-| `llm/JOURNAL.md` | journal de la confrontation au LLM (à remplir) |
-| `llm/p1.fysh`, … | propositions du LLM (à venir) |
+| `llm/JOURNAL.md` | journal de la confrontation au LLM |
+| `llm/p_<modèle>_<n>.fysh` | propositions des LLM, telles quelles |
 | `ANALYSE.md` | analyse du résultat (à remplir) |
 
 Le bonus `interpreteur/` n'est pas réalisé.
@@ -122,5 +123,5 @@ Le bonus `interpreteur/` n'est pas réalisé.
   `SPEC.md`, script `run.sh`, génération des fichiers de `tests/` et recherche des comportements de
   l'interpréteur listés dans la section « Points laissés ouverts ». Ces textes ont été relus par moi.
 - Pour rédiger `EXPLICATION.md`, Claude a lu `p.fysh`. La confrontation décrite dans `llm/JOURNAL.md`
-  sera menée avec une version de Claude dans une session distincte de celle-ci, donc sans accès à
-  `p.fysh` ni à ces échanges.
+  a été menée avec plusieurs LLM (dont Claude Haiku 5.5 et Claude Sonnet 5.5), dans des sessions
+  distinctes de celle-ci ; les conditions de chaque essai sont décrites dans ce journal.
