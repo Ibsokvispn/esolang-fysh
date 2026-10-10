@@ -8,8 +8,7 @@ Langage : **Fysh** (https://esolangs.org/wiki/Fysh).
 naturels `a` et `b`, puis l'affiche au format décrit dans la section « Sortie ».
 
 Le PGCD doit être **calculé par le programme** : la valeur affichée ne peut pas être écrite en dur,
-car le même programme sera exécuté avec de nombreux couples `(a, b)` différents. Chaque exécution
-doit se terminer en moins de 10 secondes.
+car le même programme sera exécuté avec de nombreux couples `(a, b)` différents.
 
 ## 2. Entrée
 
