@@ -1,7 +1,7 @@
 ><//> First define the 2 variables we will use
 
 ><//> 45 is written 101101 in binary
-><number1> ≈ <°)})><~
+><number1> ≈ ><{({{)}°> ~
 ><//> 36 is written 100100 in binary
 ><number2> ≈ ><{((}))°> ~
 
@@ -10,16 +10,6 @@
 
 >(gcd) ><n1> ><n2>
 ><>
-    ><//> 0. Preprocessing : GCD can only be positive, so we use positive values only
-    ><(((^> [><n1> ~o ><(°>]
-    ><>
-       ><n1> = <n1>< ~
-    <><  
-    ><(((^> [><n2> ~o ><(°>]
-    ><>
-       ><n2> = <n2>< ~
-    <>< 
-
     ><//> 1. If both numbers are equals, GCD = n1 = n2
     ><(((^> [(><n1> o≈ ><n2>) && (><n1> ≈o ><n2>)]
     ><>
