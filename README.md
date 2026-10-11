@@ -17,7 +17,7 @@ Le Fysh dispose d'une implémentation de référence en Go. Je l'ai utilisée de
 | Moyen | Lien | Version |
 |-------|------|---------|
 | Compilateur en ligne (playground) | https://fysh-fyve.github.io/playground/ | — |
-| Extension VSCode `Fysh-Fyve.fysh` | https://marketplace.visualstudio.com/items?itemName=Fysh-Fyve.fysh | v1.2.1 |
+| Extension VSCode `Fysh-Fyve.fysh` | https://marketplace.visualstudio.com/items?itemName=Fysh-Fyve.fysh | v0.0.5 |
 
 J'ai téléchargé le binaire `fysh` depuis les releases GitHub du projet (https://github.com/Fysh-Fyve/fysh,
 dossier `pkg/go-fysh`). Le bouton « run » de l'extension sur VSCode se contente ensuite de lancer
@@ -91,7 +91,7 @@ l'implémentation de référence, vérifié par des expériences avec `fysh` v0.
 |-------|---------------|----------------------|
 | Saut de ligne après `(+o` | non précisé | chaque `(+o` écrit sa valeur suivie d'un saut de ligne |
 | Séparateur des arguments d'un appel | le texte dit « fish food `-` », l'exemple utilise `*` | `-` fonctionne ; `*` provoque une erreur. `p.fysh` utilise `-` |
-| Taille des entiers | non précisé | entiers signés 64 bits ; un littéral binaire accepte au plus 63 bits (2⁶³ − 1 passe, 2⁶³ donne une erreur d'analyse) |
+| Taille des entiers | non précisé | entiers signés 64 bits ; un littéral binaire accepte au plus 63 bits (2⁶³ − 1 passe, 2⁶³ donne une erreur d'analyse). |
 | Débordement | non précisé | aucune détection : 2⁶² + 2⁶² donne −2⁶³ |
 | Littéral zéro | exemple `><(((°>` dans la page | `><(°>` et `><(((°>` valent tous deux 0 |
 | Valeur de vérité | non précisé | 0 est faux, tout autre entier est vrai ; `!!` renvoie 1 pour 0 et 0 pour un entier non nul |
@@ -112,15 +112,15 @@ l'implémentation de référence, vérifié par des expériences avec `fysh` v0.
 | `run.sh` | exécute un programme sur tous les tests |
 | `llm/JOURNAL.md` | journal de la confrontation au LLM |
 | `llm/p_<modèle>_<n>.fysh` | propositions des LLM, telles quelles |
-| `ANALYSE.md` | analyse du résultat (à remplir) |
+| `ANALYSE.md` | analyse du résultat |
+| `analyse/` | script de mesure (`distance.py`), sa méthode et ses résultats |
 
 Le bonus `interpreteur/` n'est pas réalisé.
 
 ## 7. Usage d'outils d'IA
 
 - `p.fysh` a été écrit entièrement par moi, sans LLM ni agent de code.
-- J'ai utilisé **Claude (Anthropic, modèle Claude Sonnet 5.5, interface claude.ai)** pour m'aider à produire les autres livrables : brouillons de `README.md`, `EXPLICATION.md` et
-  `SPEC.md`, script `run.sh`, génération des fichiers de `tests/` et recherche des comportements de
+- J'ai utilisé **Claude (Anthropic, modèle Claude Sonnet 5.5, interface claude.ai)** pour m'aider à produire les autres livrables : brouillons de `README.md`, `EXPLICATION.md`, `SPEC.md` et `ANALYSE.md`, mise en forme de `llm/JOURNAL.md`, script `run.sh`, scripts de `analyse/`, génération des fichiers de `tests/` et recherche des comportements de
   l'interpréteur listés dans la section « Points laissés ouverts ». Ces textes ont été relus par moi.
 - Pour rédiger `EXPLICATION.md`, Claude a lu `p.fysh`. La confrontation décrite dans `llm/JOURNAL.md`
   a été menée avec plusieurs LLM (dont Claude Haiku 5.5 et Claude Sonnet 5.5), dans des sessions
