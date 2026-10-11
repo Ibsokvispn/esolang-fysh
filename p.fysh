@@ -10,7 +10,7 @@
 
 >(gcd) ><n1> ><n2>
 ><>
-    ><//> 0. GCD can only be positive, so we use positive values only
+    ><//> 0. Preprocessing : GCD can only be positive, so we use positive values only
     ><(((^> [><n1> ~o ><(°>]
     ><>
        ><n1> = <n1>< ~
