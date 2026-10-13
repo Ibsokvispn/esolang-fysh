@@ -110,9 +110,14 @@ même conversation (0,27).
   dans une boucle.
 - **La taille** : 183 tokens contre 86 pour Haiku et 96 pour glm-2 (Sonnet, avec 194, est comparable).
 
-### 2.4 Lequel des deux programmes préférez-vous, et pourquoi ?
+### 2.4 Lequel des programmes préférez-vous, et pourquoi ?
 
-À COMPLÉTER
+Je préfère la version de Sonnet.
+
+- Stein n’utilise ni division ni modulo, seulement des décalages et des soustractions, ce qui convient bien au Fysh, qui n’a pas d’opérateur modulo documenté.
+- Sonnet utilise des boucles là où `p` utilise une fonction récursive. Cela évite en principe de surcharger la mémoire (la pile
+  d'appels) pour des entiers très grands.
+- En contrepartie, ma version est plus lisible et plus facile à comprendre.
 
 ### 2.5 Le défi est-il relevé ?
 
@@ -126,4 +131,7 @@ tokens), et même elle, qui choisit aussi Stein, a une autre structure : 3 boucl
 
 ## 3. Conclusion
 
-À COMPLÉTER
+Il faut choisir le langage en fonction de la tâche à réaliser, car tous les langages ne sont pas faits pour les mêmes
+usages. De plus, un langage qui a peu d'exemples et peu de documentation, comme le Fysh, met les LLM en difficulté :
+ils ont du mal à générer du code cohérent et valide.
+Dans l'exemple du Fysh, le même calcul (PGCD) s'écrit de manière très différente, notamment parce que le langage ne fournit pas de véritable opérateur de modulo. 
