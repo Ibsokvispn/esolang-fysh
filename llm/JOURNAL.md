@@ -70,7 +70,7 @@ Pour le moment, tu n'as toujours pas le droit de tester ton code.
 
 ## 4. Détail des essais
 
-Les réponses des modèles sont reproduites telles quelles, dans des blocs repliables. Les programmes sont dans `llm/`, non modifiés.
+Les réponses des modèles sont reproduites telles quelles textuellement et mises en forme par moi-même pour la lisibilité, dans des blocs repliables. Les programmes sont dans `llm/`, non modifiés.
 
 ### Essai 1 : Claude Haiku 5.5, effort faible
 

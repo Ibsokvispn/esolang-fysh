@@ -26,7 +26,7 @@ n'est pas dans le `PATH`.
 
 On peut également compiler l'interpréteur avec la commande `go install github.com/Fysh-Fyve/fysh/pkg/go-fysh/cmd@latest`
 (le binaire obtenu s'appelle `cmd` et correspond au dernier commit du dépôt, plus récent que la release v0.0.5 ;
-nécessite `go` d'installé - `sudo snap install go --classic `).
+nécessite `go` d'installé - `sudo snap install go --classic`).
 
 
 - Version de `fysh` (release GitHub) : v0.0.5

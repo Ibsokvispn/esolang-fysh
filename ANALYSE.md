@@ -114,7 +114,7 @@ même conversation (0,27).
 
 Je préfère la version de Sonnet.
 
-- Stein n’utilise ni division ni modulo, seulement des décalages et des soustractions, ce qui convient bien au Fysh, qui n’a pas d’opérateur modulo documenté.
+- Stein n'utilise ni division ni modulo, seulement des décalages et des soustractions, ce qui convient bien au Fysh, qui n'a pas d'opérateur modulo documenté.
 - Sonnet utilise des boucles là où `p` utilise une fonction récursive. Cela évite en principe de surcharger la mémoire (la pile
   d'appels) pour des entiers très grands.
 - En contrepartie, ma version est plus lisible et plus facile à comprendre.

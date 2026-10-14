@@ -57,7 +57,7 @@
         <~ [>(gcd) ><n1> - ><steven>] ~
     <><
 
-    ><//> 5. Both n1 and n2 are odd, u>v, GCD = GCD((n1-n2)/2, min(u, v))
+    ><//> 5. Both n1 and n2 are odd, n1>n2, GCD = GCD((n1-n2)/2, min(n1, n2))
     ><(((*> ><(((^> [><n1> o~ ><n2>]
     ><>
         ><//> (+o 🫧Both odd, n1 > n2🫧 ~ 

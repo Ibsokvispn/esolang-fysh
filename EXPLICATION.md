@@ -40,7 +40,7 @@ Un entier s'écrit avec les écailles d'un poisson : `{` et `}` valent 1, `(` et
 
 | Littéral dans `p.fysh` | Écailles | Binaire | Valeur |
 |------------------------|----------|---------|--------|
-| `><})}}({°>` (`number1`) | `}` `)` `}` `}` `(` `{` | 101101 | 45 |
+| `><})}}({°>` (`number1`) | `}` `(` `{` `{` `)` `}` | 101101 | 45 | 
 | `><{((}))°>` (`number2`) | `{` `(` `(` `}` `)` `)` | 100100 | 36 |
 | `><{°>` | `{` | 1 | 1 |
 | `><{)°>` | `{` `)` | 10 | 2 |
@@ -78,7 +78,7 @@ soit une soixantaine au plus pour des entiers de 31 bits.
 | `><x> ≈ …` ou `><x> = …` | affectation (`≈` et `=` sont équivalents) | `number1`, `number2`, `steven`, `bob`, `result` |
 | `><{((}))°>` | littéral entier en écailles | `number1`, `number2`, constantes 1 et 2 |
 | `>(gcd) ><n1> ><n2>` puis `><> … <><` | définition d'une fonction à deux paramètres, corps entre `><>` et `<><` | ligne 11 |
-| `[>(gcd) a - b]` | appel de `gcd` avec les arguments `a` et `b` (séparés par `-`) | toutes les récursions et ligne 75 |
+| `[>(gcd) a - b]` | appel de `gcd` avec les arguments `a` et `b` (séparés par `-`) | toutes les récursions et ligne 76 |
 | `<~ valeur ~` | retour de la fonction avec une valeur | à la fin de chaque règle |
 | `><(((^> [cond]` | `if` | règle 1, et règle 4 (`if` imbriqué dans le test « `n1` pair ») |
 | `><(((*>` | `else` | règle 5 (rattaché au `if` imbriqué de la règle 4), règle 8 |
@@ -104,7 +104,7 @@ Deux idiomes reviennent souvent :
 ## 5. Parcours du programme
 
 1. Lignes 4 et 6 : `number1 = 45` et `number2 = 36`.
-2. Lignes 11 à 73 : définition de `gcd` (elle ne s'exécute pas encore).
+2. Lignes 11 à 74 : définition de `gcd` (elle ne s'exécute pas encore).
 3. Ligne 75 : `result` reçoit `gcd(number1, number2)`.
 4. Lignes 80 à 85 : affichage du résultat, `The GCD of`, `45`, `and`, `36`, `is`, `9`, chacun sur sa
    ligne.
